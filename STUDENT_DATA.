@@ -1,0 +1,87 @@
+#include <stdio.h>
+#include <string.h>
+struct data
+{
+    int roll, year;
+    char name[500];
+    char department[500];
+};
+int n, i, a, b, op;
+int main()
+{
+    printf("enter the no of student you have to stored data\n");
+    scanf("%d", &n);
+    struct data std[n];
+    void display_roll(struct data std[], int);
+    void input_data(struct data std[], int);
+    void display_list(struct data std[], int);
+    input_data(std, n);
+    printf("1. year wise list of student 2.enter roll no for student information\n ");
+    scanf("%d", &op);
+    switch (op)
+    {
+    case 1:
+        display_list(std, n);
+        break;
+    case 2:
+        display_roll(std, n);
+        break;
+    default:
+        printf("enter correct option\n");
+    }
+
+    return 0;
+}
+void display_roll(struct data std[], int n)
+
+{
+    printf("enter roll no\n");
+    scanf("%d", &b);
+    printf("=========================  student Record ==============================\n");
+    for (i = 0; i < n; i++)
+    {
+        if (b == std[i].roll)
+        {
+            printf("\nName :%s", std[i].name);
+            printf("\nDepartment :%s", std[i].department);
+            printf("\nyear :%d", std[i].year);
+            printf("\n");
+        }
+        printf("-----------------------------------------------------------------\n");
+    }
+}
+
+void input_data(struct data std[], int n)
+{
+    for (i = 0; i < n; i++)
+    {
+        printf("Enter the student name\n");
+        scanf("%s", &std[i].name);
+        printf("Enter the student roll No:\n");
+        scanf("%d", &std[i].roll);
+        printf("Enter the student department name:\n");
+        scanf("%s", &std[i].department);
+        printf("Enter the student year of studying:\n");
+        scanf("%d", &std[i].year);
+    }
+    printf("-----------------------------------------------------------------\n");
+}
+void display_list(struct data std[], int n)
+{
+    printf("enter year the which you find std list:\n");
+    scanf("%d", &a);
+    printf("--------------------------------------------------------------------\n");
+    printf("\n");
+    printf("=========================  student Record ==============================\n");
+    for (i = 0; i < n; i++)
+    {
+        if (a == std[i].year)
+        {
+            printf("\n Name : %s", std[i].name);
+            printf("\n Roll no : %d", std[i].roll);
+            printf("\n Department Name :%s", std[i].department);
+        }
+        printf("\n");
+        printf("--------------------------------------------------------------------\n");
+    }
+}
